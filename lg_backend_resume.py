@@ -19,16 +19,18 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 
 load_dotenv()
-
+import streamlit as st
 # ─── HF Client ──────────────────────────────────────────────────────────────────
 
 client1 = InferenceClient(
     provider="hf-inference",
-    api_key=os.environ["HF_TOKEN"],
+    #api_key=os.environ["HF_TOKEN"],
+    api_key=st.secrets["HF_TOKEN"],
 )
 
 client2 =  InferenceClient(
-    api_key=os.environ['HF_TOKEN'],
+    #api_key=os.environ['HF_TOKEN'],
+    api_key=st.secrets["HF_TOKEN"],
 )
 EMBEDDING_MODEL = "ibm-granite/granite-embedding-278m-multilingual"
 
